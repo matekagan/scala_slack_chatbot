@@ -7,10 +7,10 @@ import slack.rtm.SlackRtmClient
 import scala.concurrent.ExecutionContextExecutor
 
 object TestApp extends App {
-  val token = "xoxb-893550387842-893559818882-CtI8IISqQe07x7hhzUgj4Y16"
   implicit val system: ActorSystem = ActorSystem("slack")
   implicit val ecd: ExecutionContextExecutor = system.dispatcher
 
+  val token = Properties get "api-token"
   val client = SlackRtmClient(token)
   val selfId = client.state.self.id
 
