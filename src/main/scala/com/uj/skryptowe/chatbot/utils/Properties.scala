@@ -1,10 +1,11 @@
-package com.uj.skryptowe.chatbot
+package com.uj.skryptowe.chatbot.utils
 
 import scala.io.Source
 
 object Properties {
   lazy private val properties: Map[String, String] = Source.fromResource("env.properties").getLines()
-      .map(parseLine).toMap
+    .filter(_.contains("="))
+    .map(parseLine).toMap
 
   private def parseLine(line: String): (String, String) = {
     val split = line.split("=")
