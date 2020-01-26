@@ -14,11 +14,10 @@ object OpenWeatherAPI {
     val parsedMain = parsedResponse \ "main"
     val weather = parsedResponse \ "weather" \ 0
     val desc = (weather \ "description").as[String]
-    val icon = (weather \ "icon").as[String]
     val temp = (parsedMain \ "temp").as[Double]
     val pressure = (parsedMain \ "pressure").as[Int]
     val humidity = (parsedMain \ "humidity").as[Int]
-    new WeatherInfo(desc, temp, pressure, humidity, s"http://openweathermap.org/img/wn/$icon@2x.png")
+    new WeatherInfo(desc, temp, pressure, humidity)
   }
 
   def getCurrentWeatherForCity(cityName: String): String = {

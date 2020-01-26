@@ -4,8 +4,7 @@ class WeatherInfo(
                    val description: String,
                    val temperature: Double,
                    val pressure: Int,
-                   val humidity: Int,
-                   val iconUrl: String
+                   val humidity: Int
                  ) {
-  override def toString = s"$iconUrl\n$description\ntemperature: $temperature °C\npressure: $pressure hPa\n humidity: $humidity"
+  override def toString = s"general description: $description\ntemperature: $temperature °C\npressure: $pressure hPa\n humidity: $humidity"
 }

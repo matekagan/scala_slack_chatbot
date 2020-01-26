@@ -28,7 +28,7 @@ class WeatherBot(val client: SlackRtmClient) {
 
     def clean: String = format.replaceAll("<@.*>", "")
       .replaceAll("[!-@]", "")
-      .trim.toLowerCase
+      .trim
 
     def getCityName: String = format.split(" +").last
   }
@@ -66,7 +66,7 @@ class WeatherBot(val client: SlackRtmClient) {
     val cityName = inMessage.text.getCityName
     val weatherInfo = queryWeather(cityName)
     weatherInfo.map(info => buildReturnMessage(inMessage, cityName, info, returnTemplate))
-      .getOrElse(s"Could not get weather info for $cityName")
+      .getOrElse(s"I am not sure if a city $cityName actually exist")
   }
 
   def buildReturnMessage(inMessage: SlackMessage, cityName: String, weatherInfo: WeatherInfo, template: String): String = {
