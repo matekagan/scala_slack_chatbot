@@ -17,6 +17,6 @@ object WeatherApp extends App {
   val bot = new WeatherBot(client)
 
   client.onMessage {
-    bot.handleMessage
+    bot.handleChatMessage
   }
 }

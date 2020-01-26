@@ -18,7 +18,7 @@ object OpenWeatherAPI {
     val temp = (parsedMain \ "temp").as[Double]
     val pressure = (parsedMain \ "pressure").as[Int]
     val humidity = (parsedMain \ "humidity").as[Int]
-    new WeatherInfo(desc, temp, pressure, humidity, s"shttp://openweathermap.org/img/wn/$icon@2x.png")
+    new WeatherInfo(desc, temp, pressure, humidity, s"http://openweathermap.org/img/wn/$icon@2x.png")
   }
 
   def getCurrentWeatherForCity(cityName: String): String = {
